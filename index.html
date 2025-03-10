@@ -36,14 +36,14 @@
         }
         .anciano {
             position: absolute;
-            width: 180px;
-            height: 260px;
+            width: 40px;
+            height: 60px;
             background: url('anciano.png') no-repeat center/cover;
             display: none;
         }
         #mensaje-final {
             display: none;
-            font-size: 444px;
+            font-size: 244px;
             color: white;
             background-color: darkred;
             padding: 10px;
@@ -88,7 +88,7 @@
                 let anciano = document.createElement("div");
                 anciano.classList.add("anciano");
                 anciano.style.left = columna.style.left;
-                anciano.style.bottom = "60px";
+                anciano.style.bottom = "40px";
                 gameContainer.appendChild(anciano);
                 
                 setTimeout(() => {
