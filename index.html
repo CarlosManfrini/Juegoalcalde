@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Alcalde</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #87CEEB;
+        }
+        #game-container {
+            position: relative;
+            width: 60em;
+            height: 34em;
+            margin: 20px auto;
+            background: url('calle_mejorada.png') no-repeat center/cover;
+            border: 2px solid black;
+            overflow: hidden;
+        }
+        .columna {
+            position: absolute;
+            bottom: 0;
+            width: 5em;
+            height: 13em;
+            background: url('columna.png') no-repeat center/cover;
+            cursor: pointer;
+        }
+        .escalera {
+            position: absolute;
+            width: 8em;
+            height: 12em;
+            background: url('escalera.png') no-repeat center/cover;
+            display: none;
+        }
+        .anciano {
+            position: absolute;
+            width: 10em;
+            height: 8em;
+            background: url('anciano.png') no-repeat center/cover;
+            display: none;
+        }
+        #mensaje-final {
+            display: none;
+            font-size: 24px;
+            color: white;
+            background-color: darkred;
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego del Alcalde</h1>
+    <div id="game-container"></div>
+    <div id="mensaje-final">¡Felicidades! Jesús Eres el Alcalde </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const gameContainer = document.getElementById("game-container");
+            let columnasColocadas = 0;
+            let columnas = [];
+            
+            for (let i = 0; i < 10; i++) {
+                let columna = document.createElement("div");
+                columna.classList.add("columna");
+                columna.style.left = `${i * 80 + 40}px`;
+                gameContainer.appendChild(columna);
+                columnas.push(columna);
+
+                columna.addEventListener("click", () => colocarEscalera(columna));
+            }
+
+            function colocarEscalera(columna) {
+                if (columna.dataset.usada) return;
+                
+                let escalera = document.createElement("div");
+                escalera.classList.add("escalera");
+                escalera.style.left = columna.style.left;
+                escalera.style.bottom = "120px";
+                gameContainer.appendChild(escalera);
+                escalera.style.display = "block";
+                
+                let anciano = document.createElement("div");
+                anciano.classList.add("anciano");
+                anciano.style.left = columna.style.left;
+                anciano.style.bottom = "60px";
+                gameContainer.appendChild(anciano);
+                
+                setTimeout(() => {
+                    anciano.style.display = "block";
+                    anciano.style.bottom = "180px";
+                    setTimeout(() => {
+                        anciano.style.bottom = "70px";
+                        columnasColocadas++;
+                        columna.dataset.usada = true;
+                        if (columnasColocadas === 10) mostrarFinal();
+                    }, 2000);
+                }, 500);
+            }
+
+            function mostrarFinal() {
+                document.getElementById("mensaje-final").style.display = "block";
+            }
+        });
+    </script>
+    <footer >
+        
+    <h5>&copy; Carlos Manfrini VERITAS.WEB</h5>
+    
+</footer>
+</body>
+</html>
