@@ -41,8 +41,8 @@ body {
 
 .tanque {
     position: absolute;
-    width: 200px;
-    height: 80px;
+    width: 20em;
+    height: 16em;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
