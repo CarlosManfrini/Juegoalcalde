@@ -1,0 +1,126 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #87CEEB;
+}
+
+#game-container {
+    position: relative;
+    width: 60em;
+    height: 34em;
+    margin: 20px auto;
+    background: url('calle_mejorada.png') no-repeat center/cover;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+.columna {
+    position: absolute;
+    bottom: 0;
+    width: 5em;
+    height: 13em;
+    background: url('columna.png') no-repeat center/cover;
+    cursor: pointer;
+}
+
+.escalera {
+    position: absolute;
+    width: 5.5em;
+    height: 8.9em;
+    background: url('escalera.png') no-repeat center/cover;
+    display: none;
+}
+
+.anciano {
+    position: absolute;
+    width: 10em;
+    height: 8em;
+    background: url('anciano.png') no-repeat center/cover;
+    display: none;
+}
+
+.tanque {
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    z-index: 10;
+}
+
+.soldado-en-llamas {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    z-index: 11;
+    animation: correr 7s linear forwards;
+}
+
+.fuego {
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    background: radial-gradient(circle, orange, red, transparent);
+    border-radius: 50%;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    z-index: 12;
+    animation: fuego-movimiento 7s linear forwards;
+}
+
+@keyframes correr {
+    0% { left: 50%; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes fuego-movimiento {
+    0% { left: 50%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+#mensaje-final {
+    display: none;
+    font-size: 24px;
+    color: white;
+    background-color: darkred;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.fuego {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background: radial-gradient(circle, orange, red, transparent);
+    border-radius: 50%;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    z-index: 12;
+    animation: fuego-movimiento 7s linear forwards, fuego-llamas 0.3s infinite alternate;
+}
+
+@keyframes fuego-movimiento {
+    0% { left: 50%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes fuego-llamas {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1.2); opacity: 0.6; }
+}
+
+
+
